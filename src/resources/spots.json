@@ -1,0 +1,15 @@
+{
+	"spots": [
+		{"name": "ørekroken", "yrl":"http://www.yr.no/sted/Norge/%C3%98stfold/Hvaler/%C3%98rekroken/varsel.xml"},
+		{"name": "larkollen", "yrl":"https://www.yr.no/sted/Norge/%C3%98stfold/Rygge/Larkollen~2779456/varsel.xml"},
+		{"name": "rossø", "yrl":"https://www.yr.no/sted/Sverige/V%C3%A4stra_G%C3%B6taland/Ross%C3%B6-Lyngnholmen/varsel.xml"},
+		{"name": "apelviken", "yrl": "https://www.yr.no/sted/Sverige/Halland/Apelviken/varsel.xml"},
+		{"name": "skallevold", "yrl": "https://www.yr.no/sted/Norge/Vestfold/T%C3%B8nsberg/Skallevollbukta/varsel.xml"},
+		{"name": "torkilstranda", "yrl": "https://www.yr.no/sted/Norge/Akershus/Frogn/Torkilstranda/varsel.xml"},
+		{"name": "fiskebäcksvik", "yrl": "https://www.yr.no/sted/Sverige/V%C3%A4stra_G%C3%B6taland/Fiskeb%C3%A4cksvik/varsel.xml"},
+		{"name": "klitmøller", "yrl": "https://www.yr.no/sted/Danmark/Nordjylland/Klitm%C3%B8ller/varsel.xml"},
+
+	]
+
+	
+}
