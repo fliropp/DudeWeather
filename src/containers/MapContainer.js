@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import Map from "../components/Map.js";
 import store from "../store/forecast.js";
-import yrls from './resources/spots.json';
+import yrspots from '../resources/spots.json';
 
 
 
@@ -20,11 +20,17 @@ const mapDispatchToProps = (dispatch) => ({
 
 export const restRequest = () => {
 
+  var yrls = [];
+    
+    for(i = 0; i < yrspots.spots.length; i++) {
+      yrls.push(yrspots.spots[i].yrl);
+    }
+
   store.dispatch(addLoad());
   let fcst = "";
   
   for(i = 0; i < yrls.length; i++){
-    fetch(yrls.spots[i].yrl)
+    fetch(yrls[i])
           .then((response) => response.text())
           .then(responseText => {
             fcst = parseXml(responseText);

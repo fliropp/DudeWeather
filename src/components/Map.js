@@ -20,10 +20,14 @@ export default class Map extends Component {
           onPress={this.props.forecastRequestError}>
           {this.props.forecast.status}
         </Text>
-        <Text>name: {this.props.forecast.spots[0].name}</Text>
-        <Text>longitude: {this.props.forecast.fcst["Ørekroken"].fcst[0]}</Text>
-        <Text>latitude: {this.props.forecast.fcst["Ørekroken"].fcst[1]}</Text>
-
+        <Text>longitude: {this.props.forecast[this.props.forecast.spots[0]].detailedStatus === 'LOAD_SUCCESS' ? this.props.forecast[this.props.forecast.spots[0]].longitude : 'not loaded'}</Text>
+        <Text>longitude: {this.props.forecast[this.props.forecast.spots[1]].detailedStatus === 'LOAD_SUCCESS' ? this.props.forecast[this.props.forecast.spots[1]].longitude : 'not loaded'}</Text>
+        <Text>longitude: {this.props.forecast[this.props.forecast.spots[2]].detailedStatus === 'LOAD_SUCCESS' ? this.props.forecast[this.props.forecast.spots[2]].longitude : 'not loaded'}</Text>
+        <Text>longitude: {this.props.forecast[this.props.forecast.spots[3]].detailedStatus === 'LOAD_SUCCESS' ? this.props.forecast[this.props.forecast.spots[3]].longitude : 'not loaded'}</Text>
+        <Text>longitude: {this.props.forecast[this.props.forecast.spots[4]].detailedStatus === 'LOAD_SUCCESS' ? this.props.forecast[this.props.forecast.spots[4]].longitude : 'not loaded'}</Text>
+        <Text>longitude: {this.props.forecast[this.props.forecast.spots[5]].detailedStatus === 'LOAD_SUCCESS' ? this.props.forecast[this.props.forecast.spots[5]].longitude : 'not loaded'}</Text>
+        <Text>longitude: {this.props.forecast[this.props.forecast.spots[6]].detailedStatus === 'LOAD_SUCCESS' ? this.props.forecast[this.props.forecast.spots[6]].longitude : 'not loaded'}</Text>
+        <Text>longitude: {this.props.forecast[this.props.forecast.spots[7]].detailedStatus === 'LOAD_SUCCESS' ? this.props.forecast[this.props.forecast.spots[7]].longitude : 'not loaded'}</Text>
       </View>
     );
   }

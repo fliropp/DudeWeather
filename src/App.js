@@ -27,15 +27,13 @@ constructor(props){
 
 componentDidMount(){
 
-  let url = "http://jsonplaceholder.typicode.com/posts/1";
-  restRequest(url);
+  restRequest();
 
 }
 
 
 
   render() {
-    console.log("rendering...");
     return (
     	<Provider store={store}>
      	<View style={styles.container}>
