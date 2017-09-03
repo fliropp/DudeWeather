@@ -2,10 +2,8 @@ import { createStore } from 'redux';
 import {INIT, IS_LOADING, LOAD_SUCCESS, LOAD_ERROR, LOAD_FORECAST, LOAD_FORECAST_SUCCESS, LOAD_FORECAST_ERROR} from "../actions.js";
 
 const initialState = {
-  name: '',
-  lon: '',
-  lat: '',
-  fcst: [],
+  spots: [],
+  fcst: {},
   status: INIT
 }
 
@@ -19,10 +17,10 @@ export const forecast = (state = initialState, action) => {
         });
     case 'LOAD_FORECAST_SUCCESS':
        return Object.assign({}, state, {
-          name: action.json.name,
-          lon:action.json.longitude,
-          lat:action.json.latitude,
-          fcst:action.json.fcst,
+          spots : spots.push(action.json.name),
+          fcst[action.json.name]: [action.json.longitude,
+                                   action.json.latitude,
+                                   action.json.fcst],
           status: LOAD_SUCCESS
         });
     case 'LOAD_FORECAST_ERROR':

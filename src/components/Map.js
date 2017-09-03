@@ -20,9 +20,9 @@ export default class Map extends Component {
           onPress={this.props.forecastRequestError}>
           {this.props.forecast.status}
         </Text>
-        <Text>name: {this.props.forecast.name}</Text>
-        <Text>longitude: {this.props.forecast.lon}</Text>
-        <Text>latitude: {this.props.forecast.lat}</Text>
+        <Text>name: {this.props.forecast.spots[0].name}</Text>
+        <Text>longitude: {this.props.forecast.fcst["Ørekroken"].fcst[0]}</Text>
+        <Text>latitude: {this.props.forecast.fcst["Ørekroken"].fcst[1]}</Text>
 
       </View>
     );

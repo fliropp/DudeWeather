@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import Map from "../components/Map.js";
 import store from "../store/forecast.js";
+import yrls from './resources/spots.json';
 
 
 
@@ -17,16 +18,13 @@ const mapDispatchToProps = (dispatch) => ({
   forecastRequestError: () => { dispatch(addLoadError()) },
 });
 
-export const restRequest = (url) => {
+export const restRequest = () => {
 
   store.dispatch(addLoad());
- 
-
-
-  let yrl = "http://www.yr.no/sted/Norge/%C3%98stfold/Hvaler/%C3%98rekroken/varsel.xml";
   let fcst = "";
-  //for(i = 0; i < yrls.length; i++){
-    fetch(yrl)
+  
+  for(i = 0; i < yrls.length; i++){
+    fetch(yrls.spots[i].yrl)
           .then((response) => response.text())
           .then(responseText => {
             fcst = parseXml(responseText);
@@ -37,7 +35,7 @@ export const restRequest = (url) => {
               console.error(error);
           });
 
-    //}
+  }
 	
 }
 
