@@ -17,8 +17,11 @@ export default class SpotDetails extends Component {
         <Text
           style={styles.spot_details}
           onPress={this.props.forecastRequestError}>
-          {this.props.forecast.title}
+          {this.props.forecast.status}
         </Text>
+        <Text>latitude: {this.props.forecast.lat}</Text>
+        <Text>longitude: {this.props.forecast.lon}</Text>
+
       </View>
     );
   }

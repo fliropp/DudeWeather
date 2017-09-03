@@ -21,14 +21,54 @@ export const restRequest = (url) => {
 
   store.dispatch(addLoad());
  
-  fetch(url)
-        .then((response) => response.json())
-        .then(json => store.dispatch(addLoadSuccess(json)))    
-        .catch((error) => {
-            store.dispatch(addLoadError());
-            console.error(error);
-        });
+
+
+  let yrl = "http://www.yr.no/sted/Norge/%C3%98stfold/Hvaler/%C3%98rekroken/varsel.xml";
+  let fcst = "";
+  //for(i = 0; i < yrls.length; i++){
+    fetch(yrl)
+          .then((response) => response.text())
+          .then(responseText => {
+            fcst = parseXml(responseText);
+            store.dispatch(addLoadSuccess(fcst));
+          })    
+          .catch((error) => {
+              store.dispatch(addLoadError());
+              console.error(error);
+          });
+
+    //}
 	
 }
+
+const parseXml = (raw) => {
+
+    var DOMParser = require('xmldom').DOMParser;
+
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(raw, 'text/xml');
+    
+    
+    var location  = doc.getElementsByTagName('location');
+    var name = location[0].getElementsByTagName('name')[0].textContent;
+    var lat = location[0].getElementsByTagName('location')[0].getAttribute('latitude');
+    var lon = location[0].getElementsByTagName('location')[0].getAttribute('longitude');
+
+    var casts = doc.getElementsByTagName('tabular')[0].getElementsByTagName('time');
+    var forecastInterval = [];
+
+    for(i = 0; i < casts.length; i++){
+      forecastInterval.push({
+        from: casts[i].getAttribute('from'),
+        to: casts[i].getAttribute('to'),
+        dir_deg:casts[i].getElementsByTagName('windDirection')[0].getAttribute('deg'),
+        dir_code: casts[i].getElementsByTagName('windDirection')[0].getAttribute('code'),
+        mps: casts[i].getElementsByTagName('windSpeed')[0].getAttribute('mps'),
+        type: casts[i].getElementsByTagName('windSpeed')[0].getAttribute('name'),
+      });
+    }
+    return {name:name, latitude:lat, longitude:lon, fcst_intervals: forecastInterval};
+
+  }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Map);

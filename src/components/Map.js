@@ -18,9 +18,12 @@ export default class Map extends Component {
         <Text
           style={styles.map}
           onPress={this.props.forecastRequestError}>
-          {this.props.forecast.title}
+          {this.props.forecast.status}
         </Text>
-        <Text>status: {this.props.forecast.title}</Text>
+        <Text>name: {this.props.forecast.name}</Text>
+        <Text>longitude: {this.props.forecast.lon}</Text>
+        <Text>latitude: {this.props.forecast.lat}</Text>
+
       </View>
     );
   }
