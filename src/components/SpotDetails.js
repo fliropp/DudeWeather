@@ -8,21 +8,14 @@ import {
 } from 'react-native';
 
 export default class SpotDetails extends Component {
-  render() {
-    return (
-      <View>
-        <Button
-          title="Spot details"
-          onPress={this.props.forecastRequest}/>
-        <Text
-          style={styles.spot_details}
-          onPress={this.props.forecastRequestError}>
-          {this.props.forecast.status}
-        </Text>
-        <Text>latitude: {this.props.forecast.lat}</Text>
-        <Text>longitude: {this.props.forecast.lon}</Text>
 
-      </View>
+  
+
+  render() {
+
+    return (
+
+    <View><Text>DETAILED VIEW</Text></View>
     );
   }
 }

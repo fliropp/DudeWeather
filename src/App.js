@@ -1,5 +1,6 @@
 import {dudeHelper} from "./Utils.js";
 import React, { Component } from 'react';
+import { SideMenu, List, ListItem } from 'react-native-elements';
 import {
   AppRegistry,
   StyleSheet,
@@ -45,14 +46,58 @@ componentDidMount(){
 }
 
 class DWDetailedForecast extends Component {
+
+  constructor () {
+    super()
+    this.state = {
+      isOpen: false
+    }
+    this.toggleSideMenu = this.toggleSideMenu.bind(this)
+  }
+
+  onSideMenuChange (isOpen: boolean) {
+    this.setState({
+      isOpen: isOpen
+    })
+  }
+
+  toggleSideMenu () {
+    this.setState({
+     isOpen: !this.state.isOpen
+    })
+  }
+
 	render() {
-		return (
-			<Provider store={store}>
-			<View style={styles.container }>
-				<SpotDetailsContainer/>
-			</View>
-			</Provider>
-		);
+    let spots = ["Ørekroken", "Larkollen", "Rossö", "Torkilstranda"]
+    const MenuComponent = (
+      <View style={{flex: 1, backgroundColor: '#ededed', paddingTop: 50}}>
+        <List containerStyle={{marginBottom: 20}}>
+          {spots.map((l, i) => (
+            <ListItem
+              //roundAvatar
+              onPress={() => console.log('Pressed')}
+              //avatar={l.avatar_url}
+              key={i}
+              title={l}
+              //subtitle={l.subtitle}
+            />
+          ))}
+        </List>
+      </View>
+  )
+
+
+    return (
+      <Provider store={store}>
+      <SideMenu
+         isOpen={this.state.isOpen}
+         onChange={this.onSideMenuChange.bind(this)}
+         menu={MenuComponent}>
+         <SpotDetailsContainer toggleSideMenu={this.toggleSideMenu.bind(this)} />
+      </SideMenu>
+      </Provider>
+    );
+
 	}
 }
 
