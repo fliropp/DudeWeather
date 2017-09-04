@@ -1,3 +1,4 @@
+import {addLoad, addLoadSuccess, addLoadError, setFocusSpot} from "../actions.js";
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
@@ -10,9 +11,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  forecastRequest: () => { dispatch({ type: LOAD_FORECAST }) },
-  forecastRequestSuccess: () => { dispatch({ type: LOAD_FORECAST_SUCCESS }) },
-  forecastRequestError: () => { dispatch({ type: LOAD_FORECAST_ERROR }) },
-})
+  forecastRequest: () => { dispatch(addLoad()) },
+  forecastRequestSuccess: () => { dispatch(addLoadSuccess()) },
+  forecastRequestError: () => { dispatch(addLoadError()) },
+  forecastSetFocusSpot: (fs) => {dispatch(setFocusSpot(fs))}
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SpotDetails);

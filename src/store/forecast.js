@@ -1,5 +1,4 @@
 import { createStore } from 'redux';
-//import {INIT, IS_LOADING, LOAD_SUCCESS, LOAD_ERROR, LOAD_FORECAST, LOAD_FORECAST_SUCCESS, LOAD_FORECAST_ERROR} from "../actions.js";
 import * as actions from "../actions.js";
 import yrspots from '../resources/spots.json';
 
@@ -17,6 +16,7 @@ const getInitialState = () => {
       initialState.spots = initialState.spots.concat(yrspots.spots[i].name);
   }
   initialState.totalCount = yrspots.spots.length;
+  initialState.focusSpot = yrspots.spots[0].name;
 
   return initialState;
 
@@ -46,6 +46,10 @@ export const forecastReducer = (state = getInitialState(), action) => {
       return Object.assign({}, state, {
           status: LOAD_ERROR
         });
+    case 'SET_FOCUS_SPOT':
+      return Object.assign({}, state, {
+          focusSpot: action.focusSpot
+        });    
     default:
       return state;
     }

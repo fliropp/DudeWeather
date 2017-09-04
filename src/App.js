@@ -1,12 +1,6 @@
 import {dudeHelper} from "./Utils.js";
 import React, { Component } from 'react';
-import { SideMenu, List, ListItem } from 'react-native-elements';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
 import { connect } from 'react-redux';
@@ -22,17 +16,15 @@ import {restRequest} from './containers/MapContainer.js';
 
 export default class DWMainView extends Component {
 
-constructor(props){
-  super(props);
-}
+  constructor(props){
+    super(props);
+  }
 
-componentDidMount(){
+  componentDidMount(){
 
-  restRequest();
+    restRequest();
 
-}
-
-
+  }
 
   render() {
     return (
@@ -47,59 +39,22 @@ componentDidMount(){
 
 class DWDetailedForecast extends Component {
 
-  constructor () {
-    super()
-    this.state = {
-      isOpen: false
-    }
-    this.toggleSideMenu = this.toggleSideMenu.bind(this)
-  }
-
-  onSideMenuChange (isOpen: boolean) {
-    this.setState({
-      isOpen: isOpen
-    })
-  }
-
-  toggleSideMenu () {
-    this.setState({
-     isOpen: !this.state.isOpen
-    })
-  }
+  
 
 	render() {
-    let spots = ["Ørekroken", "Larkollen", "Rossö", "Torkilstranda"]
-    const MenuComponent = (
-      <View style={{flex: 1, backgroundColor: '#ededed', paddingTop: 50}}>
-        <List containerStyle={{marginBottom: 20}}>
-          {spots.map((l, i) => (
-            <ListItem
-              //roundAvatar
-              onPress={() => console.log('Pressed')}
-              //avatar={l.avatar_url}
-              key={i}
-              title={l}
-              //subtitle={l.subtitle}
-            />
-          ))}
-        </List>
-      </View>
-  )
-
+   
 
     return (
       <Provider store={store}>
-      <SideMenu
-         isOpen={this.state.isOpen}
-         onChange={this.onSideMenuChange.bind(this)}
-         menu={MenuComponent}>
-         <SpotDetailsContainer toggleSideMenu={this.toggleSideMenu.bind(this)} />
-      </SideMenu>
+        <View style={styles.container}>
+          <SpotDetailsContainer/>
+        </View>
       </Provider>
     );
 
-	}
-}
+	} 
+} 
+
 
 const DudeWeather = TabNavigator({
   Oversikt: { screen: DWMainView },
