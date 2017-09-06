@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, View, Picker } from 'react-native';
+import { StyleSheet, Text, View, Picker } from 'react-native';
+import SpotDetailsView from './SpotDetailsView.js';
 
 export default class SpotDetails extends Component {
 
@@ -18,11 +19,11 @@ export default class SpotDetails extends Component {
 
     return (
       <View>
-      <Text>SPOTS:</Text>
+      <Text>SELECT SPOT FOR DETAILED VIEW</Text>
       <Picker selectedValue = {this.props.forecast.focusSpot} onValueChange = {this.setFocusSpot}>
              {spotList}      
       </Picker>
-      <Text>{this.props.forecast.focusSpot}</Text>
+      <SpotDetailsView forecast={this.props.forecast[this.props.forecast.focusSpot]}/>
       </View>
 
     );

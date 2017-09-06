@@ -22,14 +22,14 @@ export const restRequest = () => {
 
   var yrls = [];
     
-    for(i = 0; i < yrspots.spots.length; i++) {
+    for(let i = 0; i < yrspots.spots.length; i++) {
       yrls.push(yrspots.spots[i].yrl);
     }
 
   store.dispatch(addLoad());
   let fcst = "";
   
-  for(i = 0; i < yrls.length; i++){
+  for(let i = 0; i < yrls.length; i++){
     fetch(yrls[i])
           .then((response) => response.text())
           .then(responseText => {

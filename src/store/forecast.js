@@ -44,7 +44,7 @@ export const forecastReducer = (state = getInitialState(), action) => {
         });
     case 'LOAD_FORECAST_ERROR':
       return Object.assign({}, state, {
-          status: LOAD_ERROR
+          status: actions.LOAD_ERROR
         });
     case 'SET_FOCUS_SPOT':
       return Object.assign({}, state, {
