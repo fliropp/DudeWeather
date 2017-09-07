@@ -67,14 +67,13 @@ export default class DWMapView extends Component {
 }
 
 const styles = StyleSheet.create({
-    map_container: {
-    height:500,
-    width:400,
+  map_container: {
+    position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-end',	
     alignItems: 'center',
   }, 
   map: {

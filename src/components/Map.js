@@ -16,8 +16,8 @@ export default class Map extends Component {
     if(this.props.forecast.status === 'LOAD_SUCCESS_ALL') {
 
       return (
-        <View>
-          <DWMapView forecasts={this.props.forecast}/>
+        <View style={styles.container}>
+          <DWMapView forecasts={this.props.forecast} style={styles.map}/>
           <Text>longitude: {this.props.forecast[this.props.forecast.spots[0]].detailedStatus === 'LOAD_SUCCESS' ? this.props.forecast[this.props.forecast.spots[0]].longitude : 'not loaded'}</Text>
           <Text>longitude: {this.props.forecast[this.props.forecast.spots[1]].detailedStatus === 'LOAD_SUCCESS' ? this.props.forecast[this.props.forecast.spots[1]].longitude : 'not loaded'}</Text>
           <Text>longitude: {this.props.forecast[this.props.forecast.spots[2]].detailedStatus === 'LOAD_SUCCESS' ? this.props.forecast[this.props.forecast.spots[2]].longitude : 'not loaded'}</Text>
@@ -37,10 +37,20 @@ export default class Map extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
   map: {
-    padding: 30,
-    alignSelf: 'center',
-    fontSize: 26,
-    fontWeight: 'bold',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });
