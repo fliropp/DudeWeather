@@ -13,6 +13,7 @@ export default class DWMapView extends Component {
 	render() {
 
 		let deg_val = null;
+		let slider = this.props.slider;
 		const forecastArray = (fcsts) => {
 			let farray = [];
 			for(let j = 0; j < fcsts.spots.length; j ++){
@@ -35,7 +36,7 @@ export default class DWMapView extends Component {
 
   			{forecastArray(this.props.forecasts).map(function(cast, i){
 
-				deg_val = parseInt(cast.forecast[0].dir_deg) - 180 + 'deg';
+				deg_val = parseInt(cast.forecast[slider].dir_deg) - 180 + 'deg';
 
   				return(
 	  			<MapView.Marker
@@ -50,8 +51,8 @@ export default class DWMapView extends Component {
 	    		 	<MapView.Callout style={styles.spot_callout_view}>
 	              		<SpotCallout>
 	                		<Text style={styles.callout_title}>{cast.name}</Text>
-	                		<Text>vindstyrke: {cast.forecast[0].mps}</Text>
-	                		<Text>vindretning: {cast.forecast[0].dir_code}</Text>
+	                		<Text>vindstyrke: {cast.forecast[slider].mps}</Text>
+	                		<Text>vindretning: {cast.forecast[slider].dir_code}</Text>
 	              		</SpotCallout>
 	            	</MapView.Callout>
 	            </MapView.Marker>);

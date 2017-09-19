@@ -5,11 +5,16 @@ import {
   StyleSheet,
   Text,
   View,
-  ActivityIndicator
+  ActivityIndicator,
+  Slider
 } from 'react-native';
 import DWMapView from './DWMapView.js';
 
 export default class Map extends Component {
+
+  setSlider = (sl) =>{
+    this.props.forecastSetSlider(sl);
+  }
 
   render() {
 
@@ -17,7 +22,14 @@ export default class Map extends Component {
 
       return (
         <View style={styles.container}>
-          <DWMapView forecasts={this.props.forecast} style={styles.map}/>
+          <DWMapView forecasts={this.props.forecast} slider={this.props.forecast.mapSlider} style={styles.map}/>
+          <Text style={styles.timeslot}>
+            Fra: {this.props.forecast[this.props.forecast.spots[0]].forecast[this.props.forecast.mapSlider].from} -
+            Til: {this.props.forecast[this.props.forecast.spots[0]].forecast[this.props.forecast.mapSlider].to}
+          </Text>
+          <Slider minimumValue={0} maximumValue={19} minimumTrackTintColor="#03a9f4" maximumTrackTintColor="#03a9f4"
+                  step={1} value={this.props.forecast.mapSlider} onValueChange={this.setSlider} style={styles.map_slider} thumbTintColor="#f4e842"
+          />
         </View>
       );
     }else{
@@ -34,6 +46,19 @@ const styles = StyleSheet.create({
     flex: 1
   },
   map: {
-  flex: 1
+    flex: 1
   },
+  map_slider: {
+    height:20,
+    backgroundColor:'#03a9f4',
+    marginLeft: 20,
+    marginRight: 10
+  },
+  timeslot: {
+    height:20,
+    backgroundColor:'#f4e842',
+    color: '#03a9f4',
+    marginLeft: 20,
+    marginRight: 10
+  }
 });

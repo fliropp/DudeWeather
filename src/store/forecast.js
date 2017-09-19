@@ -8,7 +8,9 @@ const getInitialState = () => {
     spots: [],
     totalCount: 0,
     loadedCount: 0,
-    status: actions.INIT
+    status: actions.INIT,
+    detailSlider: 0,
+    mapSlider: 0,
   }
 
   for(i = 0; i < yrspots.spots.length; i++) {
@@ -23,10 +25,10 @@ const getInitialState = () => {
 }
 
 export const forecastReducer = (state = getInitialState(), action) => {
-  
+
   switch (action.type) {
-  
-    case 'LOAD_FORECAST': 
+
+    case 'LOAD_FORECAST':
       return Object.assign({}, state, {
           status: actions.IS_LOADING
         });
@@ -39,7 +41,7 @@ export const forecastReducer = (state = getInitialState(), action) => {
                     forecast: action.json.fcst_intervals,
                     detailedStatus: actions.LOAD_SUCCESS
                               },
-          loadedCount: state.loadedCount + 1,                    
+          loadedCount: state.loadedCount + 1,
           status: state.loadedCount + 1 < yrspots.spots.length ? actions.LOAD_SUCCESS_PARTIAL : actions.LOAD_SUCCESS_ALL,
         });
     case 'LOAD_FORECAST_ERROR':
@@ -49,7 +51,15 @@ export const forecastReducer = (state = getInitialState(), action) => {
     case 'SET_FOCUS_SPOT':
       return Object.assign({}, state, {
           focusSpot: action.focusSpot
-        });    
+        });
+    case  'SET_DETAIL_SLIDER':
+      return Object.assign({}, state, {
+        detailSlider:action.slider
+      });
+      case  'SET_MAP_SLIDER':
+        return Object.assign({}, state, {
+          mapSlider:action.slider
+        });
     default:
       return state;
     }

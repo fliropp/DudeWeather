@@ -1,4 +1,4 @@
-import {addLoad, addLoadSuccess, addLoadError, setFocusSpot} from "../actions.js";
+import {addLoad, addLoadSuccess, addLoadError, setFocusSpot, setDetailSlider} from "../actions.js";
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
@@ -14,7 +14,8 @@ const mapDispatchToProps = (dispatch) => ({
   forecastRequest: () => { dispatch(addLoad()) },
   forecastRequestSuccess: () => { dispatch(addLoadSuccess()) },
   forecastRequestError: () => { dispatch(addLoadError()) },
-  forecastSetFocusSpot: (fs) => {dispatch(setFocusSpot(fs))}
+  forecastSetFocusSpot: (fs) => {dispatch(setFocusSpot(fs))},
+  forecastSetSlider: (sl) => {dispatch(setDetailSlider(sl))}
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SpotDetails);

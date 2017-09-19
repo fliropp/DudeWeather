@@ -7,10 +7,11 @@ export default class SpotDetailsView extends Component {
 
 	render() {
 
-		const loaded = this.props.forecast.detailedStatus === LOAD_SUCCESS || this.props.forecast.detailedStatus === LOAD_ERROR;
-
+		let loaded = this.props.forecast.detailedStatus === LOAD_SUCCESS || this.props.forecast.detailedStatus === LOAD_ERROR;
+		let slider = this.props.slider;
 		return(
 			<View style={styles.details}>
+				<Text>SLIDER: {this.props.slider}</Text>
 				<Text>
 					spot: {this.props.forecast.name}
 				</Text>
@@ -21,13 +22,13 @@ export default class SpotDetailsView extends Component {
 				  latitude: {this.props.forecast.latitude}
 				 </Text>
 				 <Text>
-				  1# period: {loaded ? this.props.forecast.forecast[0].from + ' to ' + this.props.forecast.forecast[0].to : 'not loaded'}
+				  1# period: {loaded ? this.props.forecast.forecast[slider].from + ' to ' + this.props.forecast.forecast[slider].to : 'not loaded'}
 				 </Text>
 				 <Text>
-				 direction: {loaded ? this.props.forecast.forecast[0].dir_code + ' (' + this.props.forecast.forecast[0].dir_deg + ')': 'not loaded'}
+				 direction: {loaded ? this.props.forecast.forecast[slider].dir_code + ' (' + this.props.forecast.forecast[slider].dir_deg + ')': 'not loaded'}
 				 </Text>
 				 <Text>
-				 force : {loaded ? this.props.forecast.forecast[0].type + ' (' + this.props.forecast.forecast[0].mps + 'm/s)' : 'not loaded'}
+				 force : {loaded ? this.props.forecast.forecast[slider].type + ' (' + this.props.forecast.forecast[slider].mps + 'm/s)' : 'not loaded'}
 				 </Text>
 			</View>
 
