@@ -9,11 +9,6 @@ import MapContainer from './containers/MapContainer.js';
 import SpotDetailsContainer from './containers/SpotDetailsContainer.js';
 import {restRequest} from './containers/MapContainer.js';
 
-
-
-
-
-
 export default class DWMainView extends Component {
 
   constructor(props){
@@ -21,9 +16,7 @@ export default class DWMainView extends Component {
   }
 
   componentDidMount(){
-
     restRequest();
-
   }
 
   render() {
@@ -39,11 +32,7 @@ export default class DWMainView extends Component {
 
 class DWDetailedForecast extends Component {
 
-  
-
 	render() {
-   
-
     return (
       <Provider store={store}>
         <View style={styles.container}>
@@ -52,9 +41,8 @@ class DWDetailedForecast extends Component {
       </Provider>
     );
 
-	} 
-} 
-
+	}
+}
 
 const DudeWeather = TabNavigator({
   Oversikt: { screen: DWMainView },
@@ -75,7 +63,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  
+
 });
 
 AppRegistry.registerComponent('DudeWeather', () => DudeWeather);

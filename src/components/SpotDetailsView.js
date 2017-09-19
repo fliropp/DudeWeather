@@ -5,8 +5,6 @@ import {LOAD_SUCCESS, LOAD_ERROR} from '../actions.js';
 
 export default class SpotDetailsView extends Component {
 
-
-
 	render() {
 
 		const loaded = this.props.forecast.detailedStatus === LOAD_SUCCESS || this.props.forecast.detailedStatus === LOAD_ERROR;
@@ -24,7 +22,7 @@ export default class SpotDetailsView extends Component {
 				 </Text>
 				 <Text>
 				  1# period: {loaded ? this.props.forecast.forecast[0].from + ' to ' + this.props.forecast.forecast[0].to : 'not loaded'}
-				 </Text> 
+				 </Text>
 				 <Text>
 				 direction: {loaded ? this.props.forecast.forecast[0].dir_code + ' (' + this.props.forecast.forecast[0].dir_deg + ')': 'not loaded'}
 				 </Text>
@@ -40,7 +38,6 @@ export default class SpotDetailsView extends Component {
 
 const styles = StyleSheet.create({
 	details: {
-		padding: 30,
-    	alignSelf: 'center'
+		flex: 1
 	}
 });

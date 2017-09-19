@@ -53,7 +53,7 @@ export default class DWMapView extends Component {
 	                		<Text>vindstyrke: {cast.forecast[0].mps}</Text>
 	                		<Text>vindretning: {cast.forecast[0].dir_code}</Text>
 	              		</SpotCallout>
-	            	</MapView.Callout> 
+	            	</MapView.Callout>
 	            </MapView.Marker>);
   			})}
 
@@ -68,20 +68,11 @@ export default class DWMapView extends Component {
 
 const styles = StyleSheet.create({
   map_container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    justifyContent: 'flex-end',	
-    alignItems: 'center',
-  }, 
+		flex: 1,
+  },
   map: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    flex: 1,
+		width: 400,
   },
   spot_callout_view: {
   	backgroundColor:'#03a9f4'
