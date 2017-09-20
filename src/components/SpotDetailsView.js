@@ -11,7 +11,6 @@ export default class SpotDetailsView extends Component {
 		let slider = this.props.slider;
 		return(
 			<View style={styles.details}>
-				<Text>SLIDER: {this.props.slider}</Text>
 				<Text>
 					spot: {this.props.forecast.name}
 				</Text>
@@ -39,6 +38,11 @@ export default class SpotDetailsView extends Component {
 
 const styles = StyleSheet.create({
 	details: {
-		flex: 1
+		flex: 1,
+		marginLeft:20,
+		marginRight:20,
+		marginTop:80,
+		marginBottom: 60,
+		backgroundColor:'#03a9f4',
 	}
 });

@@ -22,8 +22,8 @@ export default class SpotDetails extends Component {
 
 
     return (
-      <View>
-      <Text style={styles.header}>SELECT SPOT FOR DETAILED VIEW </Text>
+      <View style={styles.container}>
+      <Text style={styles.header}>VELG SPOT FOR DETALJERT VARSEL </Text>
       <Picker selectedValue = {this.props.forecast.focusSpot} onValueChange = {this.setFocusSpot} style={styles.picker}>
              {spotList}
       </Picker>
@@ -47,15 +47,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
    header: {
-      fontSize: 30,
+      fontSize: 12,
       alignSelf: 'center',
-      color: 'red'
+      color: '#03a9f4'
    },
    picker: {
-     backgroundColor:'blue'
+     backgroundColor:'#03a9ae',
+     color: '#f4e842',
+     marginTop: 50,
+     marginLeft:20,
+     marginRight:20
    },
-   ddViewContainer: {
-     backgroundColor: 'red'
+   container: {
+     backgroundColor: '#f4e842'
    },
    detail_slider: {
      height:20,
