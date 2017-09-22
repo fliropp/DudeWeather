@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Picker, Slider } from 'react-native';
 import SpotDetailsView from './SpotDetailsView.js';
+import TheDude from '../svg/TheDude.js';
 
 export default class SpotDetails extends Component {
 
@@ -23,6 +24,7 @@ export default class SpotDetails extends Component {
 
     return (
       <View style={styles.container}>
+      <TheDude/>  
       <Text style={styles.header}>VELG SPOT FOR DETALJERT VARSEL </Text>
       <Picker selectedValue = {this.props.forecast.focusSpot} onValueChange = {this.setFocusSpot} style={styles.picker}>
              {spotList}
