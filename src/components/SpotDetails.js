@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Picker, Slider } from 'react-native';
+import { StyleSheet, Text, View, Picker, Slider, Image } from 'react-native';
 import SpotDetailsView from './SpotDetailsView.js';
 import TheDude from '../svg/TheDude.js';
 
@@ -23,50 +23,83 @@ export default class SpotDetails extends Component {
 
 
     return (
-      <View style={styles.container}>
-      <TheDude/>  
-      <Text style={styles.header}>VELG SPOT FOR DETALJERT VARSEL </Text>
-      <Picker selectedValue = {this.props.forecast.focusSpot} onValueChange = {this.setFocusSpot} style={styles.picker}>
-             {spotList}
-      </Picker>
-      <SpotDetailsView forecast={this.props.forecast[this.props.forecast.focusSpot]} slider={this.props.forecast.detailSlider} style={styles.dViewContainer}/>
-      <Slider minimumValue={0} maximumValue={19} minimumTrackTintColor="#03a9f4" maximumTractTintColor="#03a9f4"
-              step={1} value={this.props.forecast.detailSlider} onValueChange={this.setSlider} style={styles.detail_slider} thumbTintColor="#f4e842"
-      />
-      </View>
+      <Image source={require('../graphics/dw_background.jpg')} style={styles.background_container}>
+        <View style={styles.spacer_left}/>
+        <View style={styles.details_container}>
+          <TheDude style={styles.dude}></TheDude>
+          <View style={styles.details_backdrop}>
+            <Picker selectedValue = {this.props.forecast.focusSpot} onValueChange = {this.setFocusSpot} style={styles.picker}>
+                   {spotList}
+            </Picker>
+            <SpotDetailsView forecast={this.props.forecast[this.props.forecast.focusSpot]} slider={this.props.forecast.detailSlider} style={styles.dViewContainer}/>
+        </View>
+          <Slider minimumValue={0} maximumValue={19} minimumTrackTintColor="#03a9f4" maximumTractTintColor="#03a9f4"
+                  step={1} value={this.props.forecast.detailSlider} onValueChange={this.setSlider} style={styles.detail_slider} thumbTintColor="#f05a28"
+          />
+        </View>
+        <View style={styles.spacer_right}/>
+      </Image>
 
     );
   }
 }
 
-
-
 const styles = StyleSheet.create({
+  background_container: {
+    display:'flex',
+    flex:1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems:'center',
+    width: null,
+    height: null,
+    resizeMode: 'cover'
+  },
+  spacer_right: {
+    flex: 0.1,
+    backgroundColor:'transparent'
+  },
+  spacer_left: {
+    flex: 0.1,
+    backgroundColor:'transparent'
+  },
+  details_container: {
+    flex:0.8,
+    flexDirection:'column',
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'transparent',
+  },
+  dude: {
+    flex:0.5,
+    backgroundColor:'transparent'
+  },
+  details_backdrop: {
+    flexDirection:'column',
+    flex:0.5,
+    alignItems:'center',
+    backgroundColor: '#00000080',
+    borderRadius:10,
+    borderWidth:1,
+    borderColor:'#00000080'
+  },
+  picker: {
+    flex:0.1,
+    backgroundColor:'#00000060',
+    color: '#ffffff',
+    height:30,
+    width:250
+  },
   spot_details: {
-    padding: 30,
-    alignSelf: 'center',
+    flex:0.5,
     fontSize: 26,
     fontWeight: 'bold',
   },
-   header: {
-      fontSize: 12,
-      alignSelf: 'center',
-      color: '#03a9f4'
-   },
-   picker: {
-     backgroundColor:'#03a9ae',
-     color: '#f4e842',
-     marginTop: 50,
-     marginLeft:20,
-     marginRight:20
-   },
-   container: {
-     backgroundColor: '#f4e842'
-   },
-   detail_slider: {
-     height:20,
-     backgroundColor:'#03a9f4',
-     marginLeft: 0,
-     marginRight: 0
+  detail_slider: {
+    width:340,
+    height:20,
+    backgroundColor:'transparent',
+    marginLeft: 0,
+    marginRight: 0
    }
 });

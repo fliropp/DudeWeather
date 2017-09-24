@@ -50,7 +50,7 @@ const DudeWeather = TabNavigator({
 },{
   tabBarOptions : {
     style: {
-      backgroundColor: '#03a9f4',
+      backgroundColor: '#f05a28',
       height:40,
     }
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {LOAD_SUCCESS, LOAD_ERROR} from '../actions.js';
+import Wind from '../svg/Wind.js';
 
 
 export default class SpotDetailsView extends Component {
@@ -11,23 +12,27 @@ export default class SpotDetailsView extends Component {
 		let slider = this.props.slider;
 		return(
 			<View style={styles.details}>
-				<Text>
-					spot: {this.props.forecast.name}
+				<Text style={styles.details_text}>
+					spot:
 				</Text>
-				<Text>
+				<Text style={styles.details_text_spot}>
+					{this.props.forecast.name}
+				</Text>
+				<Text style={styles.details_text_geo}>
 				 longitude: {this.props.forecast.longitude}
 				 </Text>
-				 <Text>
+				 <Text style={styles.details_text_geo}>
 				  latitude: {this.props.forecast.latitude}
 				 </Text>
-				 <Text>
-				  1# period: {loaded ? this.props.forecast.forecast[slider].from + ' to ' + this.props.forecast.forecast[slider].to : 'not loaded'}
+				 <Text style={styles.details_text_time}>
+				  period: {loaded ? this.props.forecast.forecast[slider].from + ' to ' + this.props.forecast.forecast[slider].to : 'not loaded'}
 				 </Text>
-				 <Text>
-				 direction: {loaded ? this.props.forecast.forecast[slider].dir_code + ' (' + this.props.forecast.forecast[slider].dir_deg + ')': 'not loaded'}
+				 <Wind style={styles.wind}/>
+				 <Text style={styles.details_text}>
+				 {loaded ? this.props.forecast.forecast[slider].dir_code + ' (' + this.props.forecast.forecast[slider].dir_deg + ')': 'not loaded'}
 				 </Text>
-				 <Text>
-				 force : {loaded ? this.props.forecast.forecast[slider].type + ' (' + this.props.forecast.forecast[slider].mps + 'm/s)' : 'not loaded'}
+				 <Text style={styles.details_text}>
+				 {loaded ? this.props.forecast.forecast[slider].type + ' (' + this.props.forecast.forecast[slider].mps + 'm/s)' : 'not loaded'}
 				 </Text>
 			</View>
 
@@ -38,11 +43,36 @@ export default class SpotDetailsView extends Component {
 
 const styles = StyleSheet.create({
 	details: {
+		flexDirection:'column',
 		flex: 1,
 		marginLeft:20,
 		marginRight:20,
-		marginTop:80,
 		marginBottom: 60,
-		backgroundColor:'#03a9f4',
+		alignItems:'center',
+		backgroundColor:'transparent',
+	},
+	details_text: {
+		color: '#ffffff',
+		fontFamily:'notoSans',
+		fontSize: 16
+	},
+	details_text_spot: {
+		color: '#ffffff',
+		fontFamily:'notoSans',
+		fontSize: 22
+	},
+	details_text_geo: {
+		color: '#ffffff',
+		fontFamily:'notoSans',
+		fontSize: 12
+	},
+	details_text_time: {
+		color: '#ffffff',
+		fontFamily:'notoSans',
+		fontSize: 12
+	},
+	wind: {
+		flex: 1,
+		width:300
 	}
 });
