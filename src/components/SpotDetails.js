@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Picker, Slider, Image } from 'react-native';
 import SpotDetailsView from './SpotDetailsView.js';
 import TheDude from '../svg/TheDude.js';
 
+
 export default class SpotDetails extends Component {
 
     setFocusSpot = (fs) =>{
@@ -32,7 +33,7 @@ export default class SpotDetails extends Component {
                    {spotList}
             </Picker>
             <SpotDetailsView forecast={this.props.forecast[this.props.forecast.focusSpot]} slider={this.props.forecast.detailSlider} style={styles.dViewContainer}/>
-        </View>
+          </View>
           <Slider minimumValue={0} maximumValue={19} minimumTrackTintColor="#03a9f4" maximumTractTintColor="#03a9f4"
                   step={1} value={this.props.forecast.detailSlider} onValueChange={this.setSlider} style={styles.detail_slider} thumbTintColor="#f05a28"
           />
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
   },
   dude: {
     flex:0.5,
-    backgroundColor:'transparent'
+    backgroundColor:'transparent',
   },
   details_backdrop: {
     flexDirection:'column',
@@ -81,25 +82,32 @@ const styles = StyleSheet.create({
     backgroundColor: '#00000080',
     borderRadius:10,
     borderWidth:1,
-    borderColor:'#00000080'
+    borderColor:'#00000080',
+    marginTop:-70,
+    marginBottom:30,
+    zIndex:-1
   },
   picker: {
     flex:0.1,
-    backgroundColor:'#00000060',
+    justifyContent:'center',
+    backgroundColor:'#00000075',
     color: '#ffffff',
     height:30,
-    width:250
+    width:230,
+    marginTop:80,
+    marginBottom:10
   },
   spot_details: {
     flex:0.5,
     fontSize: 26,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   detail_slider: {
-    width:340,
+    width:310,
     height:20,
     backgroundColor:'transparent',
     marginLeft: 0,
-    marginRight: 0
+    marginRight: 0,
+    marginBottom:20
    }
 });

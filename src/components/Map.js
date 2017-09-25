@@ -28,7 +28,7 @@ export default class Map extends Component {
             Til: {this.props.forecast[this.props.forecast.spots[0]].forecast[this.props.forecast.mapSlider].to}
           </Text>
           <Slider minimumValue={0} maximumValue={19} minimumTrackTintColor="#03a9f4" maximumTrackTintColor="#03a9f4"
-                  step={1} value={this.props.forecast.mapSlider} onValueChange={this.setSlider} style={styles.map_slider} thumbTintColor="#f4e842"
+                  step={1} value={this.props.forecast.mapSlider} onValueChange={this.setSlider} style={styles.map_slider} thumbTintColor="#f05a28"
           />
         </View>
       );
@@ -50,14 +50,14 @@ const styles = StyleSheet.create({
   },
   map_slider: {
     height:20,
-    backgroundColor:'#03a9f4',
+    backgroundColor:'transparent',
     marginLeft: 20,
     marginRight: 10
   },
   timeslot: {
     height:20,
-    backgroundColor:'#f4e842',
-    color: '#03a9f4',
+    backgroundColor:'transparent',
+    color: '#f05a28',
     marginLeft: 20,
     marginRight: 10
   }

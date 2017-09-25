@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {LOAD_SUCCESS, LOAD_ERROR} from '../actions.js';
 import Wind from '../svg/Wind.js';
+import Moment from 'moment';
 
 
 export default class SpotDetailsView extends Component {
@@ -12,12 +13,6 @@ export default class SpotDetailsView extends Component {
 		let slider = this.props.slider;
 		return(
 			<View style={styles.details}>
-				<Text style={styles.details_text}>
-					spot:
-				</Text>
-				<Text style={styles.details_text_spot}>
-					{this.props.forecast.name}
-				</Text>
 				<Text style={styles.details_text_geo}>
 				 longitude: {this.props.forecast.longitude}
 				 </Text>
@@ -25,7 +20,7 @@ export default class SpotDetailsView extends Component {
 				  latitude: {this.props.forecast.latitude}
 				 </Text>
 				 <Text style={styles.details_text_time}>
-				  period: {loaded ? this.props.forecast.forecast[slider].from + ' to ' + this.props.forecast.forecast[slider].to : 'not loaded'}
+				  periode: {loaded ? Moment(this.props.forecast.forecast[slider].from).format('YYYY-MM-DD HH:mm') + ' - ' + Moment(this.props.forecast.forecast[slider].to).format('YYYY-MM-DD HH:mm') : 'not loaded'}
 				 </Text>
 				 <Wind style={styles.wind}/>
 				 <Text style={styles.details_text}>
@@ -73,6 +68,5 @@ const styles = StyleSheet.create({
 	},
 	wind: {
 		flex: 1,
-		width:300
 	}
 });
