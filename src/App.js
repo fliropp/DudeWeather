@@ -49,9 +49,12 @@ const DudeWeather = TabNavigator({
   Detaljert: { screen: DWDetailedForecast },
 },{
   tabBarOptions : {
+    activeTintColor:'#141F1F',
+    inactiveTintColor:'#ffffff',
+    indicatorStyle: { backgroundColor: 'transparent' },
     style: {
       backgroundColor: '#f05a28',
-      height:40,
+      height:45,
     }
   }
 });
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#f05a28',
   },
 
 });
