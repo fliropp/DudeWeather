@@ -57,6 +57,13 @@ export default class DWMapView extends Component {
 	            	</MapView.Callout>
 	            </MapView.Marker>);
   			})}
+				<MapView.Marker coordinate={
+					longitude: 10.524903,
+					latitude: 58.214131,}>
+  				<View>
+						<Text>tra la la</Text>
+					</View>
+				</MapView.Marker>
 
     		</MapView>
   			</View>
