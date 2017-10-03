@@ -25,13 +25,13 @@ export default class Map extends Component {
       return (
         <View style={styles.container}>
           <DWMapView forecasts={this.props.forecast} slider={this.props.forecast.mapSlider} style={styles.map}/>
+          <Slider minimumValue={0} maximumValue={19} minimumTrackTintColor="#03a9f4" maximumTrackTintColor="#03a9f4"
+                  step={1} value={this.props.forecast.mapSlider} onValueChange={this.setSlider} style={styles.map_slider} thumbTintColor="#141F1F"
+          />
           <Text style={styles.timeslot}>
             Periode: {Moment(this.props.forecast[this.props.forecast.spots[0]].forecast[this.props.forecast.mapSlider].from).format('YYYY-MM-DD HH:mm')}
             - {Moment(this.props.forecast[this.props.forecast.spots[0]].forecast[this.props.forecast.mapSlider].to).format('YYYY-MM-DD HH:mm')}
           </Text>
-          <Slider minimumValue={0} maximumValue={19} minimumTrackTintColor="#03a9f4" maximumTrackTintColor="#03a9f4"
-                  step={1} value={this.props.forecast.mapSlider} onValueChange={this.setSlider} style={styles.map_slider} thumbTintColor="#141F1F"
-          />
         </View>
       );
     }else{
@@ -53,15 +53,15 @@ const styles = StyleSheet.create({
   map_slider: {
     height:20,
     backgroundColor:'transparent',
-    marginLeft: 20,
-    marginRight: 10,
-    marginBottom:10
+    marginLeft: 50,
+    marginRight: 30,
+    marginBottom:0
   },
   timeslot: {
-    height:30,
+    height:15,
     backgroundColor:'transparent',
     color: '#ffffff',
-    marginLeft:50,
-    marginTop:10
+    marginLeft:60,
+    marginBottom:10
   }
 });
