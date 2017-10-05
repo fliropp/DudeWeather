@@ -11,6 +11,7 @@ const getInitialState = () => {
     status: actions.INIT,
     detailSlider: 0,
     mapSlider: 0,
+    timeslotPosition:{ longitude: 10.524903, latitude: 58.214131, }
   }
 
   for(i = 0; i < yrspots.spots.length; i++) {
@@ -60,6 +61,10 @@ export const forecastReducer = (state = getInitialState(), action) => {
         return Object.assign({}, state, {
           mapSlider:action.slider
         });
+      case 'SET_TIMESLOT_POSITION':
+        return Object.assign({}, state, {
+          timeslotPosition:action.timeslotPosition
+          });
     default:
       return state;
     }

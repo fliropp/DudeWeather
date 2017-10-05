@@ -4,11 +4,16 @@ import {LOAD_SUCCESS, LOAD_ERROR} from '../actions.js';
 import MapView from 'react-native-maps';
 import arrow from '../graphics/ic_arrow.png';
 import SpotCallout from './SpotCallout.js';
+import Moment from 'moment';
 
 
 export default class DWMapView extends Component {
 
 	configureMap(configData){}
+
+	setTimeslotPosition = (tp) => {
+		this.props.forecastSetTimeslotPosition(tp);
+	}
 
 	render() {
 
@@ -57,21 +62,22 @@ export default class DWMapView extends Component {
 	            	</MapView.Callout>
 	            </MapView.Marker>);
   			})}
-				<MapView.Marker coordinate={
-					longitude: 10.524903,
-					latitude: 58.214131,}>
-  				<View>
-						<Text>tra la la</Text>
+
+
+
+				<MapView.Marker draggable
+					coordinate={this.props.tsp}
+					onDragEnd={(e) => this.setTimeslotPosition(e.nativeEvent.coordinate)}>
+  				<View style={styles.timeslot}>
+						<Text style={styles.timeslot_text}>{Moment(this.props.forecasts[this.props.forecasts.spots[0]].forecast[this.props.slider].from).format('YYYY-MM-DD HH:mm')}</Text>
+						<Text style={styles.timeslot_text}>{Moment(this.props.forecasts[this.props.forecasts.spots[0]].forecast[this.props.slider].to).format('YYYY-MM-DD HH:mm')}</Text>
 					</View>
 				</MapView.Marker>
 
     		</MapView>
   			</View>
 		);
-
-
 	}
-
 }
 
 const styles = StyleSheet.create({
@@ -88,5 +94,20 @@ const styles = StyleSheet.create({
   callout_title: {
   	color:'#03a9f4',
   	fontWeight:'bold',
-  }
+  },
+	timeslot: {
+		backgroundColor: '#f05a28',
+		borderRadius:10,
+    borderWidth:0,
+    borderColor:'#00000080',
+	},
+	timeslot_text: {
+		fontFamily:'notoSans',
+		fontSize: 12,
+		fontWeight:'bold',
+		marginTop:3,
+		marginBottom:3,
+		marginLeft:3,
+		marginRight:3,
+	}
 });

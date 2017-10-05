@@ -8,8 +8,8 @@ import {
   ActivityIndicator,
   Slider
 } from 'react-native';
-import DWMapView from './DWMapView.js';
-import Moment from 'moment';
+import DWMapViewContainer from '../containers/DWMapViewContainer.js';
+
 
 
 export default class Map extends Component {
@@ -24,14 +24,10 @@ export default class Map extends Component {
 
       return (
         <View style={styles.container}>
-          <DWMapView forecasts={this.props.forecast} slider={this.props.forecast.mapSlider} style={styles.map}/>
+          <DWMapViewContainer forecasts={this.props.forecast} slider={this.props.forecast.mapSlider} tsp={this.props.forecast.timeslotPosition} style={styles.map}/>
           <Slider minimumValue={0} maximumValue={19} minimumTrackTintColor="#03a9f4" maximumTrackTintColor="#03a9f4"
                   step={1} value={this.props.forecast.mapSlider} onValueChange={this.setSlider} style={styles.map_slider} thumbTintColor="#141F1F"
           />
-          <Text style={styles.timeslot}>
-            Periode: {Moment(this.props.forecast[this.props.forecast.spots[0]].forecast[this.props.forecast.mapSlider].from).format('YYYY-MM-DD HH:mm')}
-            - {Moment(this.props.forecast[this.props.forecast.spots[0]].forecast[this.props.forecast.mapSlider].to).format('YYYY-MM-DD HH:mm')}
-          </Text>
         </View>
       );
     }else{
@@ -39,7 +35,6 @@ export default class Map extends Component {
         <ActivityIndicator animating={true} />
       );
     }
-
   }
 }
 
@@ -51,17 +46,10 @@ const styles = StyleSheet.create({
     flex: 1
   },
   map_slider: {
-    height:20,
+    height:50,
     backgroundColor:'transparent',
     marginLeft: 50,
     marginRight: 30,
     marginBottom:0
-  },
-  timeslot: {
-    height:15,
-    backgroundColor:'transparent',
-    color: '#ffffff',
-    marginLeft:60,
-    marginBottom:10
   }
 });

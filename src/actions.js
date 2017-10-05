@@ -10,6 +10,7 @@ export const LOAD_ERROR = 'LOAD_ERROR';
 export const SET_FOCUS_SPOT = 'SET_FOCUS_SPOT';
 export const SET_DETAIL_SLIDER = 'SET_DETAIL_SLIDER';
 export const SET_MAP_SLIDER = 'SET_MAP_SLIDER';
+export const SET_TIMESLOT_POSITION = 'SET_TIMESLOT_POSITION';
 
 export const addLoad = () => {
 	return {type: LOAD_FORECAST};
@@ -33,4 +34,8 @@ export const setDetailSlider = (slider) => {
 
 export const setMapSlider = (slider) => {
 	return {type: SET_MAP_SLIDER, slider};
+}
+
+export const setTimeslotPosition = (timeslotPosition) => {
+	return {type: SET_TIMESLOT_POSITION, timeslotPosition};
 }
