@@ -68,5 +68,6 @@ const styles = StyleSheet.create({
 	},
 	wind: {
 		flex: 1,
+		paddingTop:-30
 	}
 });

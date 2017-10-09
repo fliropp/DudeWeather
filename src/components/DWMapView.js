@@ -3,9 +3,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import {LOAD_SUCCESS, LOAD_ERROR} from '../actions.js';
 import MapView from 'react-native-maps';
 import arrow from '../graphics/ic_arrow.png';
+import arrow_red from '../graphics/ic_arrow_red.png';
+import arrow_blue from '../graphics/ic_arrow_blue.png';
 import SpotCallout from './SpotCallout.js';
 import Moment from 'moment';
-
+import {dudeHelper} from "../Utils.js";
 
 export default class DWMapView extends Component {
 
@@ -49,7 +51,7 @@ export default class DWMapView extends Component {
 	      				latitude: parseFloat(cast.latitude),
 	      				longitude: parseFloat(cast.longitude),
 	      			}}
-	     			image={arrow}
+	     			image={cast.forecast[slider].mps < 10? arrow_blue : arrow_red }
 	     			style={{transform: [{rotate:  deg_val}],}}
 	     			key={i}
 	    		>

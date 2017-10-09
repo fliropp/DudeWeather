@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     backgroundColor:'transparent'
   },
   details_container: {
-    flex:0.8,
+    flex:1,
     flexDirection:'column',
     justifyContent:'center',
     alignItems:'center',
@@ -77,15 +77,15 @@ const styles = StyleSheet.create({
   },
   details_backdrop: {
     flexDirection:'column',
-    flex:0.5,
+    flex:0.4,
     alignItems:'center',
     backgroundColor: '#00000080',
     borderRadius:10,
     borderWidth:1,
     borderColor:'#00000080',
-    marginTop:-70,
-    marginBottom:30,
-    zIndex:-1
+    marginTop:-90,
+    marginBottom:0,
+    zIndex:-1,
   },
   picker: {
     flex:0.1,
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     width:310,
     height:20,
     backgroundColor:'transparent',
+    marginTop:20,
     marginLeft: 0,
     marginRight: 0,
     marginBottom:20

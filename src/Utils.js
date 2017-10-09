@@ -5,5 +5,7 @@ export const dudeHelper = {
 	},
 	bar: () => {
 		return "barfot";
-	}
+	},
+
+  
 }
