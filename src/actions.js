@@ -11,6 +11,7 @@ export const SET_FOCUS_SPOT = 'SET_FOCUS_SPOT';
 export const SET_DETAIL_SLIDER = 'SET_DETAIL_SLIDER';
 export const SET_MAP_SLIDER = 'SET_MAP_SLIDER';
 export const SET_TIMESLOT_POSITION = 'SET_TIMESLOT_POSITION';
+export const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 
 export const addLoad = () => {
 	return {type: LOAD_FORECAST};
@@ -38,4 +39,8 @@ export const setMapSlider = (slider) => {
 
 export const setTimeslotPosition = (timeslotPosition) => {
 	return {type: SET_TIMESLOT_POSITION, timeslotPosition};
+}
+
+export const setTotalCount = (count) => {
+	return {type: SET_TOTAL_COUNT, count};
 }

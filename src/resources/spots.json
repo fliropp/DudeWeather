@@ -1,15 +1,13 @@
 {
 	"spots": [
-		{"name": "Ørekroken", "yrl":"http://www.yr.no/sted/Norge/%C3%98stfold/Hvaler/%C3%98rekroken/varsel.xml"},
-		{"name": "Larkollen", "yrl":"https://www.yr.no/sted/Norge/%C3%98stfold/Rygge/Larkollen~2779456/varsel.xml"},
-		{"name": "Rossö-Lyngnholmen", "yrl":"https://www.yr.no/sted/Sverige/V%C3%A4stra_G%C3%B6taland/Ross%C3%B6-Lyngnholmen/varsel.xml"},
-		{"name": "Apelviken", "yrl": "https://www.yr.no/sted/Sverige/Halland/Apelviken/varsel.xml"},
-		{"name": "Skallevollbukta", "yrl": "https://www.yr.no/sted/Norge/Vestfold/T%C3%B8nsberg/Skallevollbukta/varsel.xml"},
-		{"name": "Torkilstranda", "yrl": "https://www.yr.no/sted/Norge/Akershus/Frogn/Torkilstranda/varsel.xml"},
-		{"name": "Fiskebäcksvik", "yrl": "https://www.yr.no/sted/Sverige/V%C3%A4stra_G%C3%B6taland/Fiskeb%C3%A4cksvik/varsel.xml"},
-		{"name": "Klitmøller", "yrl": "https://www.yr.no/sted/Danmark/Nordjylland/Klitm%C3%B8ller/varsel.xml"},
+		{"name": "Ørekroken", "yrl":"http://www.yr.no/sted/Norge/%C3%98stfold/Hvaler/%C3%98rekroken/varsel.xml", "active": true},
+		{"name": "Larkollen", "yrl":"https://www.yr.no/sted/Norge/%C3%98stfold/Rygge/Larkollen~2779456/varsel.xml", "active": true},
+		{"name": "Rossö-Lyngnholmen", "yrl":"https://www.yr.no/sted/Sverige/V%C3%A4stra_G%C3%B6taland/Ross%C3%B6-Lyngnholmen/varsel.xml", "active": true},
+		{"name": "Apelviken", "yrl": "https://www.yr.no/sted/Sverige/Halland/Apelviken/varsel.xml", "active": false},
+		{"name": "Skallevollbukta", "yrl": "https://www.yr.no/sted/Norge/Vestfold/T%C3%B8nsberg/Skallevollbukta/varsel.xml", "active": true},
+		{"name": "Torkilstranda", "yrl": "https://www.yr.no/sted/Norge/Akershus/Frogn/Torkilstranda/varsel.xml", "active": true},
+		{"name": "Fiskebäcksvik", "yrl": "https://www.yr.no/sted/Sverige/V%C3%A4stra_G%C3%B6taland/Fiskeb%C3%A4cksvik/varsel.xml", "active": true},
+		{"name": "Klitmøller", "yrl": "https://www.yr.no/sted/Danmark/Nordjylland/Klitm%C3%B8ller/varsel.xml", "active": true},
 
 	]
-
-	
 }

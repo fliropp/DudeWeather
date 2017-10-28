@@ -22,7 +22,9 @@ export default class DWMapView extends Component {
 		const forecastArray = (fcsts) => {
 			let farray = [];
 			for(let j = 0; j < fcsts.spots.length; j ++){
-				farray.push(fcsts[fcsts.spots[j]]);
+				if(fcsts[fcsts.spots[j]].detailedStatus == 'LOAD_SUCCESS'){
+					farray.push(fcsts[fcsts.spots[j]]);
+				}
 			}
 			return farray;
 		}
@@ -39,7 +41,8 @@ export default class DWMapView extends Component {
     			}}
   			>
 
-  			{forecastArray(this.props.forecasts).map(function(cast, i){
+  			{
+				 forecastArray(this.props.forecasts).map(function(cast, i){
 
 				deg_val = parseInt(cast.forecast[slider].dir_deg) - 180 + 'deg';
 

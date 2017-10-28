@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import store from './store/forecast.js';
 import MapContainer from './containers/MapContainer.js';
 import SpotDetailsContainer from './containers/SpotDetailsContainer.js';
-import {restRequest} from './containers/MapContainer.js';
+import {restRequest, loadYrls} from './containers/MapContainer.js';
 
 export default class DWMainView extends Component {
 
@@ -16,7 +16,9 @@ export default class DWMainView extends Component {
   }
 
   componentDidMount(){
-    restRequest();
+    loadYrls().then((yrls) => {
+      restRequest(yrls);
+    });
   }
 
   render() {

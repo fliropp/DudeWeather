@@ -1,6 +1,7 @@
 import { createStore } from 'redux';
 import * as actions from "../actions.js";
 import yrspots from '../resources/spots.json';
+import {AsyncStorage} from 'react-native';
 
 const getInitialState = () => {
 
@@ -25,6 +26,8 @@ const getInitialState = () => {
 
 }
 
+
+
 export const forecastReducer = (state = getInitialState(), action) => {
 
   switch (action.type) {
@@ -43,7 +46,7 @@ export const forecastReducer = (state = getInitialState(), action) => {
                     detailedStatus: actions.LOAD_SUCCESS
                               },
           loadedCount: state.loadedCount + 1,
-          status: state.loadedCount + 1 < yrspots.spots.length ? actions.LOAD_SUCCESS_PARTIAL : actions.LOAD_SUCCESS_ALL,
+          status: state.loadedCount + 1 < state.totalCount ? actions.LOAD_SUCCESS_PARTIAL : actions.LOAD_SUCCESS_ALL,
         });
     case 'LOAD_FORECAST_ERROR':
       return Object.assign({}, state, {
@@ -64,7 +67,11 @@ export const forecastReducer = (state = getInitialState(), action) => {
       case 'SET_TIMESLOT_POSITION':
         return Object.assign({}, state, {
           timeslotPosition:action.timeslotPosition
-          });
+        });
+      case 'SET_TOTAL_COUNT':
+        return Object.assign({}, state, {
+          totalCount: action.count
+        });
     default:
       return state;
     }
