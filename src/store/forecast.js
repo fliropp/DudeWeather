@@ -26,8 +26,6 @@ const getInitialState = () => {
 
 }
 
-
-
 export const forecastReducer = (state = getInitialState(), action) => {
 
   switch (action.type) {
