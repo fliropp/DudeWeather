@@ -16,7 +16,7 @@ export default class SpotDetails extends Component {
     }
 
   render() {
-    let spots = this.props.forecast.spots;
+    let spots = this.props.forecast.spots.filter((x) => {return x.active});
 
     const spotList = spots.map((spot, i) => {
       return <Picker.Item key={i} label = {spot.name} value = {spot.name} />
