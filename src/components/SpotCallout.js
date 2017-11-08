@@ -18,7 +18,7 @@ class SpotCallout extends Component {
             {this.props.children}
           </View>
         </View>
-       
+
       </View>
     );
   }

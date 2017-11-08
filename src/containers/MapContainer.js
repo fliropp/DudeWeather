@@ -1,4 +1,4 @@
-import {addLoad, addLoadSuccess, addLoadError, setMapSlider, setTotalCount} from "../actions.js";
+import {addLoad, addLoadSuccess, addLoadError, setMapSlider, setTotalCount, setActiveSpots} from "../actions.js";
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import { AsyncStorage} from 'react-native';
@@ -6,45 +6,60 @@ import Map from "../components/Map.js";
 import store from "../store/forecast.js";
 import yrspots from '../resources/spots.json';
 
-
-
 const mapStateToProps = state => ({
   forecast: state
 })
-
 
 const mapDispatchToProps = (dispatch) => ({
   forecastRequest: () => { dispatch(addLoad()) },
   forecastRequestSuccess: () => { dispatch(addLoadSuccess()) },
   forecastRequestError: () => { dispatch(addLoadError()) },
   forecastSetSlider: (sl) => {dispatch(setMapSlider(sl))},
-  //forecastSetTotalCount: (count) => {dispatch(setTotalCount(count))}
 });
 
+
 export const restRequest = (yrls) => {
-
-  /*var yrls = [];
-
-  for(let i = 0; i < yrspots.spots.length; i++) {
-    yrls.push(yrspots.spots[i].yrl);
-  }*/
 
   store.dispatch(addLoad());
   let fcst = "";
 
   for(let i = 0; i < yrls.length; i++){
     fetch(yrls[i])
-          .then((response) => response.text())
-          .then(responseText => {
-            fcst = parseXml(responseText);
-            store.dispatch(addLoadSuccess(fcst));
-          })
-          .catch((error) => {
-              store.dispatch(addLoadError());
-              console.error(error);
-          });
+      .then((response) => response.text())
+      .then(responseText => {
+        fcst = parseXml(responseText);
+        store.dispatch(addLoadSuccess(fcst));
+      })
+      .catch((error) => {
+          store.dispatch(addLoadError());
+          console.error(error);
+      });
   }
 }
+
+
+export const loadYrls = async () => {
+  yrls = [];
+  spots = []
+  active = await AsyncStorage.getItem('@DudeWeather:active');
+  if(active){
+    yrlstring = await AsyncStorage.getItem('@DudeWeather:yrls');
+    spots = JSON.parse(yrlstring);
+    yrls = spots.filter((x) => { if(x.active){ return true; } else { return false; } })
+    yrls = yrls.map((x) => {return x.yrl});
+    store.dispatch(setTotalCount(spots.filter((x) => {return x.active}).length));
+    store.dispatch(setActiveSpots(spots));
+  }else {
+    for(let i = 0; i < yrspots.spots.length; i++) {
+      yrls.push(yrspots.spots[i].yrl);
+    }
+    store.dispatch(setActiveSpots(yrspots.spots));
+    AsyncStorage.setItem('@DudeWeather:yrls', JSON.stringify(yrspots.spots));
+    AsyncStorage.setItem('@DudeWeather:active', 'true');
+  }
+  return yrls;
+}
+
 
 const parseXml = (raw) => {
 
@@ -72,25 +87,6 @@ const parseXml = (raw) => {
     }
     return {name:name, latitude:lat, longitude:lon, fcst_intervals: forecastInterval};
 
-  }
-
-  export const loadYrls = async () => {
-    yrls = [];
-    active = await AsyncStorage.getItem('@DudeWeather:active');
-    if(active){
-      //await AsyncStorage.setItem('@DudeWeather:yrls', JSON.stringify(yrspots.spots)); //DEBUG - reset asyncStorage
-      yrlstring = await AsyncStorage.getItem('@DudeWeather:yrls');
-      yrls = JSON.parse(yrlstring).filter((x) => { if(x.active){ return true; } else { return false; } })
-      yrls = yrls.map((x) => {return x.yrl});
-      store.dispatch(setTotalCount(yrls.length));
-    }else {
-      for(let i = 0; i < yrspots.spots.length; i++) {
-        yrls.push(yrspots.spots[i].yrl);
-      }
-      AsyncStorage.setItem('@DudeWeather:yrls', JSON.stringify(yrspots.spots));
-      AsyncStorage.setItem('@DudeWeather:active', 'true');
-    }
-    return yrls;
   }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Map);

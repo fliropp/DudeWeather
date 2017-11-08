@@ -17,7 +17,10 @@ const getInitialState = () => {
 
   for(i = 0; i < yrspots.spots.length; i++) {
       initialState[yrspots.spots[i].name] = {detailedStatus: actions.INIT};
-      initialState.spots = initialState.spots.concat(yrspots.spots[i].name);
+      initialState.spots.push({
+        name: yrspots.spots[i].name,
+        yrl:yrspots.spots[i].yrl,
+        active:yrspots.spots[i].active});
   }
   initialState.totalCount = yrspots.spots.length;
   initialState.focusSpot = yrspots.spots[0].name;
@@ -58,18 +61,22 @@ export const forecastReducer = (state = getInitialState(), action) => {
       return Object.assign({}, state, {
         detailSlider:action.slider
       });
-      case  'SET_MAP_SLIDER':
-        return Object.assign({}, state, {
-          mapSlider:action.slider
-        });
-      case 'SET_TIMESLOT_POSITION':
-        return Object.assign({}, state, {
-          timeslotPosition:action.timeslotPosition
-        });
-      case 'SET_TOTAL_COUNT':
-        return Object.assign({}, state, {
-          totalCount: action.count
-        });
+    case  'SET_MAP_SLIDER':
+      return Object.assign({}, state, {
+        mapSlider:action.slider
+      });
+    case 'SET_TIMESLOT_POSITION':
+      return Object.assign({}, state, {
+        timeslotPosition:action.timeslotPosition
+      });
+    case 'SET_TOTAL_COUNT':
+      return Object.assign({}, state, {
+        totalCount: action.count
+      });
+    case 'SET_ACTIVE_SPOTS':
+      return Object.assign({}, state, {
+        spots: action.spots
+      });
     default:
       return state;
     }

@@ -22,8 +22,8 @@ export default class DWMapView extends Component {
 		const forecastArray = (fcsts) => {
 			let farray = [];
 			for(let j = 0; j < fcsts.spots.length; j ++){
-				if(fcsts[fcsts.spots[j]].detailedStatus == 'LOAD_SUCCESS'){
-					farray.push(fcsts[fcsts.spots[j]]);
+				if(fcsts[fcsts.spots[j].name].detailedStatus == 'LOAD_SUCCESS'){
+					farray.push(fcsts[fcsts.spots[j].name]);
 				}
 			}
 			return farray;
@@ -72,8 +72,8 @@ export default class DWMapView extends Component {
 					coordinate={this.props.tsp}
 					onDragEnd={(e) => this.setTimeslotPosition(e.nativeEvent.coordinate)}>
   				<View style={styles.timeslot}>
-						<Text style={styles.timeslot_text}>{Moment(this.props.forecasts[this.props.forecasts.spots[0]].forecast[this.props.slider].from).format('YYYY-MM-DD HH:mm')}</Text>
-						<Text style={styles.timeslot_text}>{Moment(this.props.forecasts[this.props.forecasts.spots[0]].forecast[this.props.slider].to).format('YYYY-MM-DD HH:mm')}</Text>
+						<Text style={styles.timeslot_text}>{Moment(this.props.forecasts[this.props.forecasts.spots[0].name].forecast[this.props.slider].from).format('YYYY-MM-DD HH:mm')}</Text>
+						<Text style={styles.timeslot_text}>{Moment(this.props.forecasts[this.props.forecasts.spots[0].name].forecast[this.props.slider].to).format('YYYY-MM-DD HH:mm')}</Text>
 					</View>
 				</MapView.Marker>
 

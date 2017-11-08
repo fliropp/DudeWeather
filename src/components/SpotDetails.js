@@ -19,7 +19,7 @@ export default class SpotDetails extends Component {
     let spots = this.props.forecast.spots;
 
     const spotList = spots.map((spot, i) => {
-      return <Picker.Item key={i} label = {spot} value = {spot} />
+      return <Picker.Item key={i} label = {spot.name} value = {spot.name} />
     });
 
 

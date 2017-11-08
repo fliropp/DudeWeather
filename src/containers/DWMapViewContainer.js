@@ -8,7 +8,7 @@ import {SET_TIMESLOT_POSITION} from "../actions.js";
 
 const mapStateToProps = state => ({
   forecast: state
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
   forecastSetTimeslotPosition: (tp) => {dispatch(setTimeslotPosition(tp))}
