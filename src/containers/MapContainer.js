@@ -61,7 +61,7 @@ export const loadYrls = async () => {
 }
 
 
-const parseXml = (raw) => {
+export const parseXml = (raw) => {
 
     var DOMParser = require('xmldom').DOMParser;
     var parser = new DOMParser();

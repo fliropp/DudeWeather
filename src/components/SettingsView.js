@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
 import CheckBox from 'react-native-checkbox';
-
+import { updateSingleRestRequest } from '../containers/SettingsContainer.js';
 export default class SpotDetailsView extends Component {
-
-
 
 	render() {
 
@@ -16,11 +14,11 @@ export default class SpotDetailsView extends Component {
         let yrlstring = await AsyncStorage.getItem('@DudeWeather:yrls');
         yrls = JSON.parse(yrlstring);
         yrls[spotIndex].active = toggle;
+				updateSingleRestRequest(yrls[spotIndex].yrl);
 				this.props.forecastSetActiveSpots(yrls);
         AsyncStorage.setItem('@DudeWeather:yrls', JSON.stringify(yrls));
       }
     }
-
 
     return(
       <View>

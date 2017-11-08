@@ -73,6 +73,10 @@ export const forecastReducer = (state = getInitialState(), action) => {
       return Object.assign({}, state, {
         totalCount: action.count
       });
+    case 'INCREMENT_TOTAL_COUNT':
+    return Object.assign({}, state, {
+      totalCount: state.totalCount + 1
+    });
     case 'SET_ACTIVE_SPOTS':
       return Object.assign({}, state, {
         spots: action.spots

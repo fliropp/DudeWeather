@@ -12,6 +12,7 @@ export const SET_DETAIL_SLIDER = 'SET_DETAIL_SLIDER';
 export const SET_MAP_SLIDER = 'SET_MAP_SLIDER';
 export const SET_TIMESLOT_POSITION = 'SET_TIMESLOT_POSITION';
 export const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
+export const INCREMENT_TOTAL_COUNT = 'INCREMENT_TOTAL_COUNT';
 export const TOGGLE_ACTIVE_STATUS_SPOT = 'TOGGLE_ACTIVE_STATUS_SPOT';
 export const SET_ACTIVE_SPOTS = 'SET_ACTIVE_SPOTS';
 
@@ -45,6 +46,10 @@ export const setTimeslotPosition = (timeslotPosition) => {
 
 export const setTotalCount = (count) => {
 	return {type: SET_TOTAL_COUNT, count};
+}
+
+export const incrementTotalCount = () => {
+	return {type: INCREMENT_TOTAL_COUNT};
 }
 
 export const toggleActiveStatus = (spot) => {
